@@ -17,3 +17,12 @@ def mergeSortedArrays(leftHalf, rightHalf):
             sortedArray[k] = rightHalf[j]
             j += 1
         k += 1
+    while i < len(leftHalf):
+        sortedArray[k] = leftHalf[i]
+        i += 1
+        k += 1
+    while j < len(rightHalf):
+        sortedArray[k] = rightHalf[j]
+        j += 1
+        k += 1
+    return sortedArray     
