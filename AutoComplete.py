@@ -5,26 +5,23 @@
 class TrieNode:
     def __init__(self, letter):
         self.letter = letter
-        # the keys are characters and the values are TrieNodes
+        self.auxArray = []
         self.children = {}
         self.is_end_of_word = False
-        ## Initialize this node in the Trie
+
     def suffixes(self, suffix = ''):
-        ## Recursive function that collects the suffix for
-        ## all complete words below this point
-        # while self.is_end_of_word == False:
-        if self.children == {}:
-            return None
-        # if self.letter:
-        #     return self.letter
-        # if self.is_end_of_word == True:
         currentChildren = self.children
+        if self.is_end_of_word == True:
+            self.auxArray.append(suffix)
+            # print(self.auxArray)
         for letter, node in currentChildren.items():
             suffix += letter
             print(suffix)
-            return node.suffixes
-        
-        return suffix
+            # currentBranch = node.suffixes(suffix)
+            self.auxArray += node.suffixes(suffix)
+            suffix = suffix[:-1] 
+        # print(self.auxArray)
+        return self.auxArray
         
         
         
@@ -81,7 +78,7 @@ def f(prefix):
     else:
         print('')
 
-f("a")
+f("tr")
 # for child in MyTrie.root.children:
 #     # print(MyTrie.find("fun"))
 #     print(child)
