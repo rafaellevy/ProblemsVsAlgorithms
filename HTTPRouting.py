@@ -32,16 +32,20 @@ class Trie:
 
 
 class Router:
-    def __init__(self):
+    def __init__(self, handler):
         self.trie = Trie()
+        self.trie.root.handler = handler
 
     def addHandler(self, url, handler):
+        if url == "" or handler == "" :
+            print("Error! Invalid URL / Handler")
+            return
         pathArray = url.split("/")
         if pathArray[-1] == "":
             pathArray.pop()
         self.trie.insert(pathArray,handler)
 
-    def lookUp(self, url):
+    def lookup(self, url):
         if url == "/":
             return self.trie.root.handler
         pathArray = url.split("/")
@@ -53,8 +57,9 @@ class Router:
 # Here are some test cases and expected outputs you can use to test your implementation
 
 # create the router and add a route
-router = Router("root handler", "not found handler") # remove the 'not found handler' if you did not implement this
-router.add_handler("/home/about", "about handler")  # add a route
+router = Router("root handler") # remove the 'not found handler' if you did not implement this
+router.addHandler("/home/about", "about handler")  # add a route
+
 
 # some lookups with the expected output
 print(router.lookup("/")) # should print 'root handler'
@@ -62,6 +67,12 @@ print(router.lookup("/home")) # should print 'not found handler' or None if you 
 print(router.lookup("/home/about")) # should print 'about handler'
 print(router.lookup("/home/about/")) # should print 'about handler' or None if you did not handle trailing slashes
 print(router.lookup("/home/about/me")) # should print 'not found handler' or None if you did not implement one
+print()
+# EDGE CASES
+router.addHandler("", "") # expect error message
+print(router.lookup("")) # expect 'root handler'
+router.addHandler("/home/about", "new about handler") # change handler for url
+print(router.lookup("/home/about")) # expect 'new about handler'
 
 
 

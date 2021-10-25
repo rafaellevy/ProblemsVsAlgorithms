@@ -28,15 +28,9 @@ def mergeSortedArrays(leftHalf, rightHalf):
     return sortedArray
 
 def rearrange_digits(input_list):
-    """
-    Rearrange Array Elements so as to form two number such that their sum is maximum.
-
-    Args:
-       input_list(list): Input List
-    Returns:
-       (int),(int): Two maximum sums
-    """
     # sort the input list using merge sort
+    if input_list == []:
+        return []
     input_list = mergeSort(input_list)
     resultArray = []
     largerNumber = ""
@@ -62,7 +56,12 @@ def test_function(test_case):
 
 test_function([[1, 2, 3, 4, 5], [542, 31]])
 # [1, 2, 3]  [4, 5]  --> [542]   
-test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
-test_function(test_case)
+test_case1 = [[4, 6, 2, 5, 9, 8], [964, 852]]
+test_case2 = [[1, 2, 3, 4, 5, 6], [642, 531]] # edge case: array already sorted.
+test_case3 =  [[], []] # edge case: expect error message 
+
+test_function(test_case1)
+test_function(test_case2)
+test_function(test_case3)
 
 
