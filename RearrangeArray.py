@@ -58,7 +58,7 @@ test_function([[1, 2, 3, 4, 5], [542, 31]])
 # [1, 2, 3]  [4, 5]  --> [542]   
 test_case1 = [[4, 6, 2, 5, 9, 8], [964, 852]]
 test_case2 = [[1, 2, 3, 4, 5, 6], [642, 531]] # edge case: array already sorted.
-test_case3 =  [[], []] # edge case: expect error message 
+test_case3 =  [[], []] # edge case: expect empty array 
 
 test_function(test_case1)
 test_function(test_case2)

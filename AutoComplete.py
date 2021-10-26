@@ -78,7 +78,9 @@ def f(prefix):
     else:
         print('')
 
-f("tr")
+f("tr") # expect: ie, igger, igonometry, ipod
+f("b") # edge case : not found 
+f("") # edge case: print empty line 
 # for child in MyTrie.root.children:
 #     # print(MyTrie.find("fun"))
 #     print(child)
