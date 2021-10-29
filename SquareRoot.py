@@ -1,4 +1,6 @@
 def binary_search(square):
+    if type(square) == str:
+        return "invalid input"
     if square < 0:
         return "error!: Invalid input"
     mid = square / 2
@@ -25,7 +27,7 @@ def helper(square, low, high):
         return helper(square, mid, high)
 
 print(binary_search(-1)) # edge case: expect error message
-print(binary_search(0)) # edge case: expect zero
+print(binary_search("s")) # edge case: invalid input message
 print(binary_search(3)) # expect 1
 print(binary_search(4)) # expect 2
 print(binary_search(25)) # expect 5

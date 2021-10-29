@@ -47,6 +47,8 @@ def findPivot(array, low_index, high_index):
 
 
 def searchRotatedArray(array, number):
+    if array == []:
+        return "Invalid Input"
     # find the pivot of the array
     pivot = findPivot(array, 0, len(array) - 1)
     # once we find a pivot, found out which side of the pivot we want to do binary search on - first or second half?
@@ -80,6 +82,7 @@ def test_function(test_case):
 
 test_function([[1,2,3,4,0], 2]) # edge case: pivot is at the end, expect 1
 test_function([[1,2,3,4,0], 5]) # edge case: expect -1
+print(searchRotatedArray([], 5)) # edge case: expect invalid input message
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 8])

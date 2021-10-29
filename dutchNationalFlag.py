@@ -8,7 +8,12 @@ def sort_012(input_list):
     currentIdx = 0
     end = len(input_list) -1
 
+    if input_list == []:
+        return "Invalid Input"
+
     while currentIdx <= end:
+        if input_list[currentIdx] < 0 or input_list[currentIdx] > 2:
+            return "Invalid Input"
         if input_list[currentIdx] < 1:
             swap(input_list,currentIdx,start)
             currentIdx += 1
@@ -32,7 +37,7 @@ def test_function(test_case):
 
 test_function([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])
 test_function([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1])
-# edge case: expect same as input 
-test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
-# edge case: expect 001
-test_function([0,1,0])
+# edge case: expect invalid input
+print(sort_012([]))
+# edge case: expect invalid input
+print(sort_012([0,5,0]))

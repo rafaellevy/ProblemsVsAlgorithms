@@ -1,5 +1,5 @@
 I used a dictionary for the children property of the Trie Node to allow fast access when inserting or finding a specific Node of the trie.
 
-In terms of time complexity it is O(n) since looking through the dictionary keys when inserting / finding takes O(n) time.  
+In terms of time complexity it is O(n) since looking through the dictionary keys when inserting / finding takes O(n) time (this is for the Trie class).  When inserting a node child to the class RouteTrieNode, the time complexity is actually O(1) it's simply making a new key value pair. 
 
-In terms of space complexity it is O(n), since adding a new url / handler creates only one more node in the trie. 
+In terms of space complexity it is O(n), since adding a new url / handler creates only one more node in the trie.  Inserting a handler is O(n), because the worst case scenario is each split path of the url requires a new node to be created in the Trie.  However, the insertNode method of class RouteTrieNode has a space complexity of O(1) because you can only insert one node at a time.   

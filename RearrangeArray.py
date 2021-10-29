@@ -37,9 +37,13 @@ def rearrange_digits(input_list):
     smallerNumber = ""
     current = None
     for i in range(len(input_list)-1,-1,-2):
+        if input_list[i] < 0:
+            return "invalid input"
     # auxArray.append(array[i])
         largerNumber += str(input_list[i])
     for i in range(len(input_list)-2,-1,-2):
+        if input_list[i] < 0:
+            return "invalid input"
         smallerNumber += str(input_list[i])
     smallerNumber = int(smallerNumber)
     largerNumber = int(largerNumber)
@@ -58,7 +62,8 @@ test_function([[1, 2, 3, 4, 5], [542, 31]])
 # [1, 2, 3]  [4, 5]  --> [542]   
 test_case1 = [[4, 6, 2, 5, 9, 8], [964, 852]]
 test_case2 = [[1, 2, 3, 4, 5, 6], [642, 531]] # edge case: array already sorted.
-test_case3 =  [[], []] # edge case: expect empty array 
+test_case3 =  [[], []] # edge case: expect empty array
+print(rearrange_digits([-1,2,3,5])) # edge case: expect error message
 
 test_function(test_case1)
 test_function(test_case2)
